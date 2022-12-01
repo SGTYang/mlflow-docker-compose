@@ -17,7 +17,7 @@ services:
       timeout: 10s
       retries: 5
     volumes:
-      - db:/data/postgresql/data
+      - /data/var/lib/postgresql/data:/var/lib/postgresql/data
 
   mlflow-server:
     container_name: mlflow-server
@@ -38,6 +38,5 @@ services:
       interval: 15s
       timeout: 15s
       retries: 3
-
-volumes:
-  db:
+    volumes:
+      - /data:/data
