@@ -39,7 +39,7 @@ services:
       timeout: 15s
       retries: 3
     volumes:
-      - mlflow-volume:/
+      - mlflow-volume:/data
 
 volumes:
   postgres-db-volume:
