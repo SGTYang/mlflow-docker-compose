@@ -17,7 +17,7 @@ services:
       timeout: 10s
       retries: 5
     volumes:
-      - /data/var/lib/postgresql/data:/var/lib/postgresql/data
+      - postgres-db-volume:/var/lib/postgresql/data
 
   mlflow-server:
     container_name: mlflow-server
@@ -40,3 +40,11 @@ services:
       retries: 3
     volumes:
       - /data:/data
+
+volumes:
+  postgres-db-volume:
+    driver: local
+    driver_opts:
+      type: "none"
+      o: "bind"
+      device: "data/postgresql"
