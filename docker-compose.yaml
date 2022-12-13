@@ -39,7 +39,7 @@ services:
       timeout: 15s
       retries: 3
     volumes:
-      - /data:/data
+      - mlflow-volume:/
 
 volumes:
   postgres-db-volume:
@@ -48,3 +48,9 @@ volumes:
       type: "none"
       o: "bind"
       device: "data/postgresql"
+  mlflow-volume:
+    driver: local
+    driver_opts:
+      type: "none"
+      o: "bind"
+      device: "data/mlflow"

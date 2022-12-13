@@ -1,4 +1,4 @@
-# Mlflow 
+# Mlflow
 MLflow는 머신러닝(Machine learning) 모델의 실험을 tracking하고 model을 공유 및 deploy 할 수 있도록 지원하는 라이브러리
 
 # mlflow dockerfile
@@ -68,7 +68,7 @@ services:
       timeout: 15s
       retries: 3
     volumes:
-      - /data:/data
+      - mlflow-volume:/
 
 volumes:
   postgres-db-volume:
@@ -76,5 +76,11 @@ volumes:
     driver_opts:
       type: "none"
       o: "bind"
-      device: "data/postgresql"
+      device: "/data/postgresql"
+  mlflow-volume:
+    driver: local
+    driver_opts:
+      type: "none"
+      o: "bind"
+      device: "data/mlflow"
 ```
