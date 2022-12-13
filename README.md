@@ -2,6 +2,8 @@
 MLflow는 머신러닝(Machine learning) 모델의 실험을 tracking하고 model을 공유 및 deploy 할 수 있도록 지원하는 라이브러리
 
 # mlflow dockerfile
+1. dockerfile을 이용해서 build후 docker-compose로 사용
+
 ``` docker
 # 베이스 이미지
 FROM continuumio/miniconda3:latest
