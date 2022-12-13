@@ -4,20 +4,20 @@ services:
     container_name: mlflow-db
     image: postgres:latest
     restart: always
-    ports:
-      - ${DB_PORT}:${DB_PORT}
     environment:
       - POSTGRES_DB=${DB_NAME}
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PW}
       - TZ=Asia/Seoul
+    expose:
+      - ${DB_PORT}
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}" ]
       interval: 15s
       timeout: 10s
       retries: 5
     volumes:
-      - postgres-db-volume:/var/lib/postgresql/data
+      - postgres-mlflow-db-volume:/var/lib/postgresql/data
 
   mlflow-server:
     container_name: mlflow-server
@@ -42,15 +42,15 @@ services:
       - mlflow-volume:/data
 
 volumes:
-  postgres-db-volume:
+  postgres-mlflow-db-volume:
     driver: local
     driver_opts:
       type: "none"
       o: "bind"
-      device: "data/postgresql"
+      device: "/data/postgresql-mlflow"
   mlflow-volume:
     driver: local
     driver_opts:
       type: "none"
       o: "bind"
-      device: "data/mlflow"
+      device: "/data/mlflow"
