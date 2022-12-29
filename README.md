@@ -22,7 +22,6 @@ RUN chmod +x wait-for-it.sh
 ```
 
 # docker-compose 및 dockerfile
-https://velog.io/@h13m0n/MLOps-MLFlow-with-Docker 참고하여 작성
 
 ``` yaml
 version: "3.3"
