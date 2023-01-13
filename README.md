@@ -20,7 +20,7 @@ COPY wait-for-it.sh wait-for-it.sh
 RUN chmod +x wait-for-it.sh
 ```
 
-# docker-compose 및 dockerfile
+# docker-compose
 
 ``` yaml
 version: "3.3"
