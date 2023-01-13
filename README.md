@@ -43,7 +43,6 @@ services:
       interval: 15s
       timeout: 10s
       retries: 5
-    # volume을 호스트 볼륨으로 설정(k8s 환경에서는 X), 볼륨설정을 안하면 이미지 삭제하면 저장되었던 데이터도 함꺠 삭제됨
     volumes:
       - postgres-db-volume:/var/lib/postgresql/data
     
